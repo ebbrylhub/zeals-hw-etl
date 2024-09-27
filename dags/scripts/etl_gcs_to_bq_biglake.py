@@ -1,7 +1,8 @@
 from google.cloud import bigquery
+from google.cloud.exceptions import NotFound
 import os
 
-def create_external_table_bikeshare(overwrite = False):
+def create_external_table_bikeshare():
     # Initialize BigQuery client
     client = bigquery.Client()
 
@@ -14,10 +15,23 @@ def create_external_table_bikeshare(overwrite = False):
         "gs://bigquery-analytics-bucket/bikeshare/"
     )
 
+    # Define the schema of the table based on the public data
+    schema = [
+        bigquery.SchemaField("trip_id", "STRING"),
+        bigquery.SchemaField("subscriber_type", "STRING"),
+        bigquery.SchemaField("bike_id", "STRING"),
+        bigquery.SchemaField("bike_type", "STRING"),
+        bigquery.SchemaField("start_time", "TIMESTAMP"),
+        bigquery.SchemaField("start_station_id", "INTEGER"),
+        bigquery.SchemaField("start_station_name", "STRING"),
+        bigquery.SchemaField("end_station_id", "STRING"),
+        bigquery.SchemaField("end_station_name", "STRING"),
+        bigquery.SchemaField("duration_minutes", "INTEGER"),
+    ]
+
     # Set up the external configuration
     external_config = bigquery.ExternalConfig("PARQUET")
     external_config.source_uris = [uri]
-    external_config.autodetect = True
 
     # Set up the table partitioning based on the start_time (daily partitioning)
     hive_partitioning_opts = bigquery.HivePartitioningOptions()
@@ -28,16 +42,21 @@ def create_external_table_bikeshare(overwrite = False):
     external_config.hive_partitioning = hive_partitioning_opts
 
     # Create the table object
-    table = bigquery.Table(table_id)
+    table = bigquery.Table(table_id, schema=schema)
     table.external_data_configuration = external_config
 
-    # Create the external table in BigQuery
-    if overwrite:
-        client.delete_table(table, not_found_ok=True)
+    # Check if the table exists
+    try:
+        existing_table = client.get_table(table_id)  # Get the existing table
 
-    table = client.create_table(table, exists_ok=True)  # Make an API request
-
-    print(f"External table {table_id} created successfully.")
+        # Update the existing table with the new external configuration
+        existing_table.external_data_configuration = external_config
+        updated_table = client.update_table(existing_table, ["external_data_configuration"])
+        print(f"External table {table_id} updated successfully.")
+    except NotFound:
+        # Create the external table if it does not exist
+        table = client.create_table(table, exists_ok=True)
+        print(f"External table {table_id} created successfully.")
 
 if __name__ == "__main__":
     pass
