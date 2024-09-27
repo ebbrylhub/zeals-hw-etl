@@ -1,16 +1,9 @@
 from google.cloud import bigquery
-from google.oauth2 import service_account
 import os
 
-def create_external_table(overwrite = False):
-    # Path to your service account JSON file
-    service_account_path = os.path.join(os.getcwd(), "dags/scripts/service_account.json")
-
-    # Use service account credentials for BigQuery client
-    credentials = service_account.Credentials.from_service_account_file(service_account_path)
-    
+def create_external_table_bikeshare(overwrite = False):
     # Initialize BigQuery client
-    client = bigquery.Client(credentials=credentials, project=credentials.project_id)
+    client = bigquery.Client()
 
     # Table ID for the new external table
     table_id = "temporal-sweep-436906-n8.analytics.bikeshare_table"
@@ -47,4 +40,4 @@ def create_external_table(overwrite = False):
     print(f"External table {table_id} created successfully.")
 
 if __name__ == "__main__":
-    create_external_table(overwrite=True)
+    pass

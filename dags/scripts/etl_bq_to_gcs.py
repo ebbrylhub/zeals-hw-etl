@@ -1,20 +1,13 @@
+from datetime import datetime, timedelta
 from google.cloud import bigquery
 from google.cloud import storage
-from google.oauth2 import service_account
-from datetime import datetime, timedelta
-import pandas as pd
 import os
+import pandas as pd
 
-def extract_bigquery_data():
-    # Path to your service account JSON file
-    service_account_path = os.path.join(os.getcwd(), "dags/scripts/service_account.json")
-
-    # Use service account credentials for both BigQuery and Storage clients
-    credentials = service_account.Credentials.from_service_account_file(service_account_path)
-    
+def extract_bigquery_bikeshare():
     # Initialize BigQuery and Storage clients with the credentials
-    client = bigquery.Client(credentials=credentials, project=credentials.project_id)
-    storage_client = storage.Client(credentials=credentials, project=credentials.project_id)
+    client = bigquery.Client()
+    storage_client = storage.Client()
 
     # Get the previous day's date
     previous_day = (datetime(2024, 6, 30) - timedelta(1)).strftime('%Y-%m-%d')
@@ -53,4 +46,4 @@ def extract_bigquery_data():
         print(f"Data for {previous_day} at hour {hour:02d} uploaded to {folder_path} in GCS.")
 
 if __name__ == "__main__":
-    extract_bigquery_data()
+    pass
