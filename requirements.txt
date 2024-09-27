@@ -1,0 +1,6 @@
+apache-airflow[gcp]
+google-cloud-bigquery
+google-cloud-bigquery-storage
+google-cloud-storage
+pandas
+pyarrow
