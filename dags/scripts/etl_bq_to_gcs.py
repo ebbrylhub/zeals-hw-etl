@@ -5,6 +5,9 @@ import os
 import pandas as pd
 
 def extract_bigquery_bikeshare():
+    # Prepare Environment Variables
+    bucket_name = os.environ['GCS_BUCKET_NAME']
+    
     # Initialize BigQuery and Storage clients with the credentials
     client = bigquery.Client()
     storage_client = storage.Client()
@@ -25,8 +28,6 @@ def extract_bigquery_bikeshare():
     hour_iteration = pd.to_datetime(df['start_time']).dt.hour
 
     # Save the data into GCS in Parquet format, partitioned by date and hour
-    bucket_name = 'bigquery-analytics-bucket'
-
     # Iterate over each hour to partition data by hour and upload to GCS
     for hour in set(hour_iteration):
         # Filter data for the specific hour

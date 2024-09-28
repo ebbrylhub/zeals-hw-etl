@@ -3,16 +3,21 @@ from google.cloud.exceptions import NotFound
 import os
 
 def create_external_table_bikeshare():
+    # Prepare Environment Variables
+    project_id = os.environ['GOOGLE_CLOUD_PROJECT']
+    dataset_id = os.environ['BQ_DATASET_NAME']
+    bucket_name = os.environ['GCS_BUCKET_NAME']
+
     # Initialize BigQuery client
     client = bigquery.Client()
 
     # Table ID for the new external table
-    table_id = "temporal-sweep-436906-n8.analytics.bikeshare_table"
+    table_id = f"{project_id}.{dataset_id}.bikeshare_table"
 
     # Source uri
-    uri = "gs://bigquery-analytics-bucket/bikeshare/*"
+    uri = f"gs://{bucket_name}/bikeshare/*"
     source_uri_prefix = (
-        "gs://bigquery-analytics-bucket/bikeshare/"
+        f"gs://{bucket_name}/bikeshare/"
     )
 
     # Define the schema of the table based on the public data

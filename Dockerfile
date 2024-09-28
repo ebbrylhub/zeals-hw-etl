@@ -26,6 +26,8 @@ COPY dags/ /opt/airflow/dags/
 
 # Set environment variables for Google Cloud credentials
 ENV GOOGLE_CLOUD_PROJECT=temporal-sweep-436906-n8
+ENV GCS_BUCKET_NAME=bigquery-analytics-bucket
+ENV BQ_DATASET_NAME=analytics
 
 # Authenticate using a service account key
 RUN gcloud auth activate-service-account --key-file=/opt/airflow/dags/scripts/service_account.json && \
