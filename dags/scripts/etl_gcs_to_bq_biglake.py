@@ -41,7 +41,7 @@ def create_external_table_bikeshare():
     # Set up the table partitioning based on the start_time (daily partitioning)
     hive_partitioning_opts = bigquery.HivePartitioningOptions()
     hive_partitioning_opts.mode = "AUTO"
-    hive_partitioning_opts.require_partition_filter = True
+    hive_partitioning_opts.require_partition_filter = False
     hive_partitioning_opts.source_uri_prefix = source_uri_prefix
 
     external_config.hive_partitioning = hive_partitioning_opts
@@ -62,6 +62,8 @@ def create_external_table_bikeshare():
         # Create the external table if it does not exist
         table = client.create_table(table, exists_ok=True)
         print(f"External table {table_id} created successfully.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
     pass

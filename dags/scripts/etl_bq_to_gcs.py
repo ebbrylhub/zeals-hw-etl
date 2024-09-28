@@ -35,12 +35,12 @@ def extract_bigquery_bikeshare(processing_date):
         folder_path = f'bikeshare/date={processing_date}/hour={hour:02d}/data.parquet'
         
         # Save hourly DataFrame to Parquet format locally
-        hourly_data.to_parquet("data.parquet")
+        hourly_data.to_parquet(f"{processing_date}_{hour:02d}_data.parquet", compression=None, index=True)
 
         # Upload the file to GCS
         bucket = storage_client.bucket(bucket_name)
         blob = bucket.blob(folder_path)
-        blob.upload_from_filename("data.parquet")
+        blob.upload_from_filename(f"{processing_date}_{hour:02d}_data.parquet")
 
         print(f"Data for {processing_date} at hour {hour:02d} uploaded to {folder_path} in GCS.")
 
