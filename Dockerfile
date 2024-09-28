@@ -1,5 +1,6 @@
 FROM apache/airflow:2.7.0
 
+# Root User for Installing Google Cloud SDK
 USER root
 
 # Install Google Cloud SDK
@@ -11,6 +12,7 @@ RUN apt-get update -y && \
     apt-get update -y && \
     apt-get install google-cloud-cli -y
 
+# Airflow User for Installing Dependencies and Authentication
 USER airflow
 
 # Copy requirements.txt into the image
