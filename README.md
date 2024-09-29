@@ -38,6 +38,7 @@
 ## How to Setup and Run the Project
 
 ### 1. Setup the Project 
+**[:arrow_up: back to top](#table-of-content)**
 #### Build the image and container using docker-compose
 ```bash
 docker-compose up -d --build
@@ -48,6 +49,7 @@ This will run docker-compose with build parameter in the background. Once comple
 **[:arrow_up: back to top](#table-of-content)**
 
 ### 2. Run the Project
+**[:arrow_up: back to top](#table-of-content)**
 #### Open Airflow in Browser
 http://localhost:8080/home
 
@@ -118,7 +120,7 @@ Following the Assignment standard, these are the project structure used
 **[:arrow_up: back to top](#table-of-content)**
 
 ## Feature Checklist
-
+**[:arrow_up: back to top](#table-of-content)**
 ### Task 1: Data Extraction and Storage
 - Write a Python or Spark script to extract data from the
 `bigquery-public-data.austin_bikeshare.bikeshare_trips` table in BigQuery 
