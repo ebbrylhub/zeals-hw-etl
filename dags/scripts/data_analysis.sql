@@ -11,7 +11,7 @@ GROUP BY 1
 ORDER BY 1 ASC;
 
 -- 3. **Identify the top 5 stations with the highest number of trip starts.**
-SELECT start_station_name, COUNT(trip_id) number_of_trip
+SELECT start_station_name, COUNT(trip_id) number_of_trip, COUNT(DISTINCT trip_id) AS unique_trip
 FROM `temporal-sweep-436906-n8.analytics.bikeshare_table`
 GROUP BY 1
 ORDER BY 2 DESC
@@ -21,7 +21,7 @@ LIMIT 5;
 SELECT date, ROUND(COUNT(trip_id)/24, 2) AS average_number_of_trips_per_hour_of_day
 FROM `temporal-sweep-436906-n8.analytics.bikeshare_table`
 GROUP BY 1
-ORDER BY 1;
+ORDER BY 1 DESC;
 
 -- 5. **Determine the most common trip route (start station to end station).**
 SELECT start_station_name, end_station_name, COUNT(trip_id) total_trips
@@ -47,7 +47,7 @@ LIMIT 1;
 SELECT hour, COUNT(trip_id) AS number_of_trips 
 FROM `temporal-sweep-436906-n8.analytics.bikeshare_table`
 GROUP BY 1
-ORDER BY number_of_trips;
+ORDER BY number_of_trips DESC;
 
 -- 9. **Identify the day with the highest number of trips.**
 SELECT date, COUNT(trip_id) AS number_of_trips

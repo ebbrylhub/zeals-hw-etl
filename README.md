@@ -22,17 +22,29 @@
       - [1: Create a Dockerfile:](#1-create-a-dockerfile-)
       - [2: Docker Compose:](#2-docker-compose-)
     + [Task 5: Data Analysis](#task-5-data-analysis)
-    + [Task 6: Documentation](#task-6-documentation)
+    + [1. Find the total number of trips for each day.](#1-find-the-total-number-of-trips-for-each-day)
+    + [2. Calculate the average trip](#2-calculate-the-average-trip)
+    + [3. Identify the top 5 stations with the highest number of trip starts.](#3-identify-the-top-5-stations-with-the-highest-number-of-trip-starts)
+    + [4. Find the average number of trips per hour of the day.](#4-find-the-average-number-of-trips-per-hour-of-the-day)
+    + [5. Determine the most common trip route (start station to end station).](#5-determine-the-most-common-trip-route-start-station-to-end-station)
+    + [6. Calculate the number of trips each month.](#6-calculate-the-number-of-trips-each-month)
+    + [7. Find the station with the longest average trip duration.](#7-find-the-station-with-the-longest-average-trip-duration)
+    + [8. Find the busiest hour of the day (most trips started).](#8-find-the-busiest-hour-of-the-day--most-trips-started-)
+    + [9. Identify the day with the highest number of trips.](#9-identify-the-day-with-the-highest-number-of-trips)
+    + [Data Completeness](#data-completeness)
+    + [Task 6: Documentation](#task-6--documentation)
 
 ## How to Setup and Run the Project
 
-### 1: Setup the Project 
+### 1. Setup the Project 
 #### Build the image and container using docker-compose
 ```bash
 docker-compose up -d --build
 ```
 This will run docker-compose with build parameter in the background. Once completed you will see this:
 ![alt text](docs/images/docker-compose-build.png "Title")
+
+**[:arrow_up: back to top](#table-of-contents)**
 
 ### 2. Run the Project
 #### Open Airflow in Browser
@@ -155,15 +167,47 @@ scheduler and web server
 
 ### Task 5: Data Analysis
 
-1. **Find the total number of trips for each day.**
-2. **Calculate the average trip duration for each day.**
-3. **Identify the top 5 stations with the highest number of trip starts.**
-4. **Find the average number of trips per hour of the day.**
-5. **Determine the most common trip route (start station to end station).**
-6. **Calculate the number of trips each month.**
-7. **Find the station with the longest average trip duration.**
-8. **Find the busiest hour of the day (most trips started).**
-9. **Identify the day with the highest number of trips.**
+### 1. Find the total number of trips for each day.
+
+![alt text](docs/images/data-analysis-1.png "Title")
+
+### 2. Calculate the average trip 
+duration for each day.**
+
+![alt text](docs/images/data-analysis-2.png "Title")
+
+### 3. Identify the top 5 stations with the highest number of trip starts.
+
+![alt text](docs/images/data-analysis-3.png "Title")
+
+### 4. Find the average number of trips per hour of the day.
+
+![alt text](docs/images/data-analysis-4.png "Title")
+
+### 5. Determine the most common trip route (start station to end station).
+
+![alt text](docs/images/data-analysis-5.png "Title")
+
+### 6. Calculate the number of trips each month.
+
+![alt text](docs/images/data-analysis-6.png "Title")
+
+### 7. Find the station with the longest average trip duration.
+
+![alt text](docs/images/data-analysis-7.png "Title")
+
+### 8. Find the busiest hour of the day (most trips started).
+
+![alt text](docs/images/data-analysis-8.png "Title")
+
+### 9. Identify the day with the highest number of trips.
+
+![alt text](docs/images/data-analysis-9.png "Title")
+
+### Data Completeness
+Data Comparison between Public Data and The Projects.
+
+![alt text](docs/images/data-completeness.png "Title")
 
 ### Task 6: Documentation
 - Provide a `README.md` file with detailed instructions on how to set up and run the project
