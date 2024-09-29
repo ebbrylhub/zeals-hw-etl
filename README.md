@@ -125,50 +125,58 @@ Following the Assignment standard, these are the project structure used
 - Write a Python or Spark script to extract data from the
 `bigquery-public-data.austin_bikeshare.bikeshare_trips` table in BigQuery 
 > Python script are used to extract bikeshare trips data from Big Query
-- The script should query the data for the previous day to keep the extraction
-manageable and relevant for daily updates 
+- The script should query the data for the previous day to keep the extraction manageable and relevant for daily updates 
 > The Use of Jinja kwargs['ds'] for extracting yesterday data
-- The data extracted should be partitioned by date and hour to optimize
-storage and query performance
-> The data is partitioned by date & hour in both GCS and Big Lake External Table (BQ)
+
+![alt text](docs/images/jinja-yesterday-process.png "Jinja Yesterday")
+![alt text](docs/images/jinja-yesterday-process-results.png "Jinja Yesterday")
+
+- The data extracted should be partitioned by date and hour to optimize storage and query performance
+> The extracted data is partitioned by date & hour in GCS
+
+![alt text](docs/images/partitioning-biglake-gcs.png "Partition Big Query & GCS")
+
 - Save the data in Parquet
 > The data saved in Parquet Format
-- Ensure the data is organized in a directory structure that reflects the
-partitioning (e.g.,
-`gs://your-bucket-name/bikeshare/YYYY-MM-DD/HH/data.parquet`)
+- Ensure the data is organized in a directory structure that reflects the partitioning (e.g., `gs://your-bucket-name/bikeshare/YYYY-MM-DD/HH/data.parquet`)
 > Implemented with `gs://bigquery-analytics-bucket/bikeshare/date=YYYY-MM-DD/hour=HH/data.parquet`
+
+![alt text](docs/images/partitioning-directory-structure-gcs.png "Partition Big Query & GCS")
 
 **[:arrow_up: back to top](#table-of-content)**
 
 ### Task 2: Creating BigLake Table
-- Write a script or use Airflow operators to create an external table in
-BigQuery
+- Write a script or use Airflow operators to create an external table in BigQuery
 > PythonOperator in Airflow is used to create the external table in BigQuery.
 - The table should reference the partitioned data stored in GCS
+
+![alt text](docs/images/partitioning-biglake-gcs.png "Partition Big Query & GCS")
+
 > GCS are references with partition of date and hour
-- Ensure the external table is updated or recreated daily to reflect the new
-partitions of data
+- Ensure the external table is updated or recreated daily to reflect the new partitions of data
 > The table will be created in the first job run, and then it will be updated daily
 
 **[:arrow_up: back to top](#table-of-content)**
 
 ### Task 3: Airflow DAG for Automation
-- Develop an Airflow DAG to automate the ETL pipeline, ensuring it runs
-daily
+- Develop an Airflow DAG to automate the ETL pipeline, ensuring it runs daily
 > The Airflow DAG is developed to automate the ETL pipeline scripts (`bikeshare_etl.py`)
+
+![alt text](docs/images/airflow-dag-bikeshare.png "DAG for Bikeshare ETL")
+
 - Schedule the DAG to run once every day
 > The Airflow DAG is automated to run `@daily` by using schedule_interval
+
+![alt text](docs/images/airflow-daily-schedule.png "Airflow Daily Schedule")
 
 **[:arrow_up: back to top](#table-of-content)**
 
 ### Task 4: Containerization
 
 #### 1: Create a Dockerfile:
-- Write a Dockerfile to containerize the Airflow environment along with the
-necessary scripts
+- Write a Dockerfile to containerize the Airflow environment along with the necessary scripts
 > Dockerfile are created to containerize the Airflow Environment
-- Ensure all dependencies (e.g., Google Cloud SDK, Python packages) are
-installed
+- Ensure all dependencies (e.g., Google Cloud SDK, Python packages) are installed
 > Google Cloud SDK, Python & Python packages are installed within Docker
 - Set environment variables as needed for authentication and configuration
 > Environment variables are done in Docker for Cloud SDK authentication using Service Account 
@@ -179,6 +187,8 @@ scheduler and web server
 > docker-compose are used to setup airflow services of scheduler, web server, worker, postgres db for metadata, redis for CeleryExecutor
 - Ensure the services can be easily started, stopped, and managed using Docker Compose
 > We can easily start & managed using `docker-compose up -d`, and stopped using `docker-compose down`
+
+![alt text](docs/images/docker-compose-down.png "Docker Compose Down and Up")
 
 **[:arrow_up: back to top](#table-of-content)**
 
