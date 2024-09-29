@@ -1,6 +1,7 @@
 # Zeals ETL Project
 [![GitHub Repo](https://img.shields.io/github/stars/ebbrylhub/zeals-hw-etl?style=social)](https://github.com/ebbrylhub/zeals-hw-etl)
 
+## Table of Content
 - [Zeals ETL Project](#zeals-etl-project)
   * [How to Setup and Run the Project](#how-to-setup-and-run-the-project)
     + [1. Setup the Project](#1-setup-the-project)
@@ -44,7 +45,7 @@ docker-compose up -d --build
 This will run docker-compose with build parameter in the background. Once completed you will see this:
 ![alt text](docs/images/docker-compose-build.png "Title")
 
-**[:arrow_up: back to top](#table-of-contents)**
+**[:arrow_up: back to top](#table-of-content)**
 
 ### 2. Run the Project
 #### Open Airflow in Browser
