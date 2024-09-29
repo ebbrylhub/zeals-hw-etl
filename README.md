@@ -241,6 +241,7 @@ With 9118 minutes being the longest average trip duration.
 
 #### 8. Find the busiest hour of the day (most trips started).
 The most trip based on the start hour:
+
 ![alt text](docs/images/data-analysis-8.png "Data Analysis 8")
 
 With 5 PM being the busiest hour of trip start.
@@ -249,6 +250,7 @@ With 5 PM being the busiest hour of trip start.
 
 #### 9. Identify the day with the highest number of trips.
 The day with most trip:
+
 ![alt text](docs/images/data-analysis-9.png "Data Analysis 9")
 
 With March 19th, 2015 totaling 2928 number of trips in a single day.
