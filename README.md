@@ -30,7 +30,7 @@
       - [5. Determine the most common trip route (start station to end station).](#5-determine-the-most-common-trip-route-start-station-to-end-station)
       - [6. Calculate the number of trips each month.](#6-calculate-the-number-of-trips-each-month)
       - [7. Find the station with the longest average trip duration.](#7-find-the-station-with-the-longest-average-trip-duration)
-      - [8. Find the busiest hour of the day (most trips started).](#8-find-the-busiest-hour-of-the-day--most-trips-started-)
+      - [8. Find the busiest hour of the day (most trips started).](#8-find-the-busiest-hour-of-the-day-most-trips-started-)
       - [9. Identify the day with the highest number of trips.](#9-identify-the-day-with-the-highest-number-of-trips)
       - [Data Completeness](#data-completeness)
     + [Task 6: Documentation](#task-6-documentation)
