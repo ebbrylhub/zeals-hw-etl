@@ -23,17 +23,17 @@
       - [1: Create a Dockerfile:](#1-create-a-dockerfile-)
       - [2: Docker Compose:](#2-docker-compose-)
     + [Task 5: Data Analysis](#task-5-data-analysis)
-    + [1. Find the total number of trips for each day.](#1-find-the-total-number-of-trips-for-each-day)
-    + [2. Calculate the average trip](#2-calculate-the-average-trip)
-    + [3. Identify the top 5 stations with the highest number of trip starts.](#3-identify-the-top-5-stations-with-the-highest-number-of-trip-starts)
-    + [4. Find the average number of trips per hour of the day.](#4-find-the-average-number-of-trips-per-hour-of-the-day)
-    + [5. Determine the most common trip route (start station to end station).](#5-determine-the-most-common-trip-route-start-station-to-end-station)
-    + [6. Calculate the number of trips each month.](#6-calculate-the-number-of-trips-each-month)
-    + [7. Find the station with the longest average trip duration.](#7-find-the-station-with-the-longest-average-trip-duration)
-    + [8. Find the busiest hour of the day (most trips started).](#8-find-the-busiest-hour-of-the-day--most-trips-started-)
-    + [9. Identify the day with the highest number of trips.](#9-identify-the-day-with-the-highest-number-of-trips)
-    + [Data Completeness](#data-completeness)
-    + [Task 6: Documentation](#task-6--documentation)
+      - [1. Find the total number of trips for each day.](#1-find-the-total-number-of-trips-for-each-day)
+      - [2. Calculate the average trip](#2-calculate-the-average-trip)
+      - [3. Identify the top 5 stations with the highest number of trip starts.](#3-identify-the-top-5-stations-with-the-highest-number-of-trip-starts)
+      - [4. Find the average number of trips per hour of the day.](#4-find-the-average-number-of-trips-per-hour-of-the-day)
+      - [5. Determine the most common trip route (start station to end station).](#5-determine-the-most-common-trip-route-start-station-to-end-station)
+      - [6. Calculate the number of trips each month.](#6-calculate-the-number-of-trips-each-month)
+      - [7. Find the station with the longest average trip duration.](#7-find-the-station-with-the-longest-average-trip-duration)
+      - [8. Find the busiest hour of the day (most trips started).](#8-find-the-busiest-hour-of-the-day--most-trips-started-)
+      - [9. Identify the day with the highest number of trips.](#9-identify-the-day-with-the-highest-number-of-trips)
+      - [Data Completeness](#data-completeness)
+    + [Task 6: Documentation](#task-6-documentation)
 
 ## How to Setup and Run the Project
 
@@ -173,8 +173,6 @@ installed
 - Set environment variables as needed for authentication and configuration
 > Environment variables are done in Docker for Cloud SDK authentication using Service Account 
 
-**[:arrow_up: back to top](#table-of-content)**
-
 #### 2: Docker Compose:
 - Create a `docker-compose.yml` file to set up Airflow services, including the
 scheduler and web server
@@ -186,62 +184,62 @@ scheduler and web server
 
 ### Task 5: Data Analysis
 
-### 1. Find the total number of trips for each day.
+#### 1. Find the total number of trips for each day.
 
 ![alt text](docs/images/data-analysis-1.png "Title")
 
 **[:arrow_up: back to top](#table-of-content)**
 
-### 2. Calculate the average trip 
+#### 2. Calculate the average trip 
 duration for each day.**
 
 ![alt text](docs/images/data-analysis-2.png "Title")
 
 **[:arrow_up: back to top](#table-of-content)**
 
-### 3. Identify the top 5 stations with the highest number of trip starts.
+#### 3. Identify the top 5 stations with the highest number of trip starts.
 
 ![alt text](docs/images/data-analysis-3.png "Title")
 
 **[:arrow_up: back to top](#table-of-content)**
 
-### 4. Find the average number of trips per hour of the day.
+#### 4. Find the average number of trips per hour of the day.
 
 ![alt text](docs/images/data-analysis-4.png "Title")
 
 **[:arrow_up: back to top](#table-of-content)**
 
-### 5. Determine the most common trip route (start station to end station).
+#### 5. Determine the most common trip route (start station to end station).
 
 ![alt text](docs/images/data-analysis-5.png "Title")
 
 **[:arrow_up: back to top](#table-of-content)**
 
-### 6. Calculate the number of trips each month.
+#### 6. Calculate the number of trips each month.
 
 ![alt text](docs/images/data-analysis-6.png "Title")
 
 **[:arrow_up: back to top](#table-of-content)**
 
-### 7. Find the station with the longest average trip duration.
+#### 7. Find the station with the longest average trip duration.
 
 ![alt text](docs/images/data-analysis-7.png "Title")
 
 **[:arrow_up: back to top](#table-of-content)**
 
-### 8. Find the busiest hour of the day (most trips started).
+#### 8. Find the busiest hour of the day (most trips started).
 
 ![alt text](docs/images/data-analysis-8.png "Title")
 
 **[:arrow_up: back to top](#table-of-content)**
 
-### 9. Identify the day with the highest number of trips.
+#### 9. Identify the day with the highest number of trips.
 
 ![alt text](docs/images/data-analysis-9.png "Title")
 
 **[:arrow_up: back to top](#table-of-content)**
 
-### Data Completeness
+#### Data Completeness
 Data Comparison between Public Data and The Projects.
 
 ![alt text](docs/images/data-completeness.png "Title")
