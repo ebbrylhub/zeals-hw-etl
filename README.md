@@ -24,7 +24,7 @@
       - [2: Docker Compose:](#2-docker-compose-)
     + [Task 5: Data Analysis](#task-5-data-analysis)
       - [1. Find the total number of trips for each day.](#1-find-the-total-number-of-trips-for-each-day)
-      - [2. Calculate the average trip](#2-calculate-the-average-trip)
+      - [2. Calculate the average trip](#2-calculate-the-average-trip-duration-for-each-day)
       - [3. Identify the top 5 stations with the highest number of trip starts.](#3-identify-the-top-5-stations-with-the-highest-number-of-trip-starts)
       - [4. Find the average number of trips per hour of the day.](#4-find-the-average-number-of-trips-per-hour-of-the-day)
       - [5. Determine the most common trip route (start station to end station).](#5-determine-the-most-common-trip-route-start-station-to-end-station)
@@ -44,7 +44,7 @@
 docker-compose up -d --build
 ```
 This will run docker-compose with build parameter in the background. Once completed you will see this:
-![alt text](docs/images/docker-compose-build.png "Title")
+![alt text](docs/images/docker-compose-build.png "docker-compose up -d --build")
 
 **[:arrow_up: back to top](#table-of-content)**
 
@@ -55,14 +55,14 @@ http://localhost:8080/home
 
 #### Login into Airflow
 Use admin credentials for the first login
-![alt text](docs/images/airflow-login.png "Title")
+![alt text](docs/images/airflow-login.png "Airflow Login Page")
 
 #### Enable the DAGS
 For the first setup we need to enable the DAGS so it will run a backfill for scheduled DAGS from its start_date
-![alt text](docs/images/airflow-dags-enable-and-backfill.png "Title")
+![alt text](docs/images/airflow-dags-enable-and-backfill.png "Enable DAGS")
 
 #### Completed State
-![alt text](docs/images/airflow-final-state.png "Title")
+![alt text](docs/images/airflow-final-state.png "Airflow Final State")
 
 **[:arrow_up: back to top](#table-of-content)**
 
@@ -185,57 +185,65 @@ scheduler and web server
 ### Task 5: Data Analysis
 
 #### 1. Find the total number of trips for each day.
-
-![alt text](docs/images/data-analysis-1.png "Title")
+The total number of trips of each day ordered from the oldest date.
+![alt text](docs/images/data-analysis-1.png "Data Analysis 1")
+Date 2013-12-12 only have 1 daily trip.
 
 **[:arrow_up: back to top](#table-of-content)**
 
-#### 2. Calculate the average trip 
-duration for each day.**
-
-![alt text](docs/images/data-analysis-2.png "Title")
+#### 2. Calculate the average trip duration for each day.
+The average trip duration in minutes for each day calculated and rounded to 3 decimals.
+![alt text](docs/images/data-analysis-2.png "Data Analysis 2")
+with date 2013-12-12 averaging 29 minutes of trip duration
 
 **[:arrow_up: back to top](#table-of-content)**
 
 #### 3. Identify the top 5 stations with the highest number of trip starts.
-
-![alt text](docs/images/data-analysis-3.png "Title")
+Top 5 stations with the highest number based on trip start:
+![alt text](docs/images/data-analysis-3.png "Data Analysis 3")
+ranging from 44k-108k number of trips.
 
 **[:arrow_up: back to top](#table-of-content)**
 
 #### 4. Find the average number of trips per hour of the day.
-
-![alt text](docs/images/data-analysis-4.png "Title")
+The average number of trips per hour of the day: 
+![alt text](docs/images/data-analysis-4.png "Data Analysis 4")
+on June 30th, 2024 the number of trips averaging 13.79 per hour.
 
 **[:arrow_up: back to top](#table-of-content)**
 
 #### 5. Determine the most common trip route (start station to end station).
-
-![alt text](docs/images/data-analysis-5.png "Title")
+The most common trip route based on start and end station:
+![alt text](docs/images/data-analysis-5.png "Data Analysis 5")
+*Dean Keeton/Whitis* to *21st/Speedway @ PCL* with 17k total trips.
 
 **[:arrow_up: back to top](#table-of-content)**
 
 #### 6. Calculate the number of trips each month.
-
-![alt text](docs/images/data-analysis-6.png "Title")
+The total number of trips each month:
+![alt text](docs/images/data-analysis-6.png "Data Analysis 6")
+starting from December 2013 with 1418 number of trips.
 
 **[:arrow_up: back to top](#table-of-content)**
 
 #### 7. Find the station with the longest average trip duration.
-
-![alt text](docs/images/data-analysis-7.png "Title")
+The longest average trip duration:
+![alt text](docs/images/data-analysis-7.png "Data Analysis 7")
+with 9118 minutes being the longest average trip duration.
 
 **[:arrow_up: back to top](#table-of-content)**
 
 #### 8. Find the busiest hour of the day (most trips started).
-
-![alt text](docs/images/data-analysis-8.png "Title")
+The most trip based on the start hour:
+![alt text](docs/images/data-analysis-8.png "Data Analysis 8")
+With 5 pm being the busiest hour of trip start.
 
 **[:arrow_up: back to top](#table-of-content)**
 
 #### 9. Identify the day with the highest number of trips.
-
-![alt text](docs/images/data-analysis-9.png "Title")
+The day with most trip:
+![alt text](docs/images/data-analysis-9.png "Data Analysis 9")
+With March 19th, 2015 totaling 2928 number of trips in a single day.
 
 **[:arrow_up: back to top](#table-of-content)**
 
