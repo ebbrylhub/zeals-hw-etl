@@ -62,6 +62,8 @@ For the first setup we need to enable the DAGS so it will run a backfill for sch
 #### Completed State
 ![alt text](docs/images/airflow-final-state.png "Title")
 
+**[:arrow_up: back to top](#table-of-content)**
+
 ### Prerequisites and Environment Information
 #### Prerequisites
 In order to run this project these conditions need to be met:
@@ -93,6 +95,8 @@ ENV BQ_DATASET_NAME=<bigquery-dataset-name>
 - GCS_BUCKET_NAME for Google Cloud Storage Bucket Destination
 - BQ_DATASET_NAME for Big Query Dataset Destination
 
+**[:arrow_up: back to top](#table-of-content)**
+
 ### Project Structure
 Following the Assignment standard, these are the project structure used
 
@@ -110,6 +114,8 @@ Following the Assignment standard, these are the project structure used
     |-- docker-compose.yml (Docker Compose YML)
     |-- requirements.txt (Requirements for Airflow Environment)
     |-- README.md (Documentation & Instructions)
+
+**[:arrow_up: back to top](#table-of-content)**
 
 ## Feature Checklist
 
@@ -130,6 +136,8 @@ partitioning (e.g.,
 `gs://your-bucket-name/bikeshare/YYYY-MM-DD/HH/data.parquet`)
 > Implemented with `gs://bigquery-analytics-bucket/bikeshare/date=YYYY-MM-DD/hour=HH/data.parquet`
 
+**[:arrow_up: back to top](#table-of-content)**
+
 ### Task 2: Creating BigLake Table
 - Write a script or use Airflow operators to create an external table in
 BigQuery
@@ -140,12 +148,16 @@ BigQuery
 partitions of data
 > The table will be created in the first job run, and then it will be updated daily
 
+**[:arrow_up: back to top](#table-of-content)**
+
 ### Task 3: Airflow DAG for Automation
 - Develop an Airflow DAG to automate the ETL pipeline, ensuring it runs
 daily
 > The Airflow DAG is developed to automate the ETL pipeline scripts (`bikeshare_etl.py`)
 - Schedule the DAG to run once every day
 > The Airflow DAG is automated to run `@daily` by using schedule_interval
+
+**[:arrow_up: back to top](#table-of-content)**
 
 ### Task 4: Containerization
 
@@ -159,6 +171,8 @@ installed
 - Set environment variables as needed for authentication and configuration
 > Environment variables are done in Docker for Cloud SDK authentication using Service Account 
 
+**[:arrow_up: back to top](#table-of-content)**
+
 #### 2: Docker Compose:
 - Create a `docker-compose.yml` file to set up Airflow services, including the
 scheduler and web server
@@ -166,49 +180,71 @@ scheduler and web server
 - Ensure the services can be easily started, stopped, and managed using Docker Compose
 > We can easily start & managed using `docker-compose up -d`, and stopped using `docker-compose down`
 
+**[:arrow_up: back to top](#table-of-content)**
+
 ### Task 5: Data Analysis
 
 ### 1. Find the total number of trips for each day.
 
 ![alt text](docs/images/data-analysis-1.png "Title")
 
+**[:arrow_up: back to top](#table-of-content)**
+
 ### 2. Calculate the average trip 
 duration for each day.**
 
 ![alt text](docs/images/data-analysis-2.png "Title")
 
+**[:arrow_up: back to top](#table-of-content)**
+
 ### 3. Identify the top 5 stations with the highest number of trip starts.
 
 ![alt text](docs/images/data-analysis-3.png "Title")
+
+**[:arrow_up: back to top](#table-of-content)**
 
 ### 4. Find the average number of trips per hour of the day.
 
 ![alt text](docs/images/data-analysis-4.png "Title")
 
+**[:arrow_up: back to top](#table-of-content)**
+
 ### 5. Determine the most common trip route (start station to end station).
 
 ![alt text](docs/images/data-analysis-5.png "Title")
+
+**[:arrow_up: back to top](#table-of-content)**
 
 ### 6. Calculate the number of trips each month.
 
 ![alt text](docs/images/data-analysis-6.png "Title")
 
+**[:arrow_up: back to top](#table-of-content)**
+
 ### 7. Find the station with the longest average trip duration.
 
 ![alt text](docs/images/data-analysis-7.png "Title")
+
+**[:arrow_up: back to top](#table-of-content)**
 
 ### 8. Find the busiest hour of the day (most trips started).
 
 ![alt text](docs/images/data-analysis-8.png "Title")
 
+**[:arrow_up: back to top](#table-of-content)**
+
 ### 9. Identify the day with the highest number of trips.
 
 ![alt text](docs/images/data-analysis-9.png "Title")
+
+**[:arrow_up: back to top](#table-of-content)**
 
 ### Data Completeness
 Data Comparison between Public Data and The Projects.
 
 ![alt text](docs/images/data-completeness.png "Title")
+
+**[:arrow_up: back to top](#table-of-content)**
 
 ### Task 6: Documentation
 - Provide a `README.md` file with detailed instructions on how to set up and run the project
@@ -219,3 +255,5 @@ environment setup, and how to trigger the Airflow DAG
 - Explain the project structure, including where to place configuration files
 and scripts
 > The project structure are explain in the documentation
+
+**[:arrow_up: back to top](#table-of-content)**
