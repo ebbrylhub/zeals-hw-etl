@@ -3,26 +3,26 @@
 
 - [Zeals ETL Project](#zeals-etl-project)
   * [How to Setup and Run the Project](#how-to-setup-and-run-the-project)
-    + [1: Setup the Project](#1--setup-the-project)
+    + [1. Setup the Project](#1-setup-the-project)
       - [Build the image and container using docker-compose](#build-the-image-and-container-using-docker-compose)
     + [2. Run the Project](#2-run-the-project)
       - [Open Airflow in Browser](#open-airflow-in-browser)
       - [Login into Airflow](#login-into-airflow)
       - [Enable the DAGS](#enable-the-dags)
       - [Completed State](#completed-state)
-    + [Pre-requisites & Environment Information](#pre-requisites---environment-information)
-      - [Pre-requisites](#pre-requisites)
+    + [Prerequisites and Environment Information](#prerequisites-and-environment-information)
+      - [Prerequisites](#prerequisites)
       - [Environment Setup](#environment-setup)
     + [Project Structure](#project-structure)
   * [Feature Checklist](#feature-checklist)
-    + [Task 1: Data Extraction and Storage](#task-1--data-extraction-and-storage)
-    + [Task 2: Creating BigLake Table](#task-2--creating-biglake-table)
-    + [Task 3: Airflow DAG for Automation](#task-3--airflow-dag-for-automation)
-    + [Task 4: Containerization](#task-4--containerization)
-      - [1: Create a Dockerfile:](#1--create-a-dockerfile-)
-      - [2: Docker Compose:](#2--docker-compose-)
-    + [Task 5: Data Analysis](#task-5--data-analysis)
-    + [Task 6: Documentation](#task-6--documentation)
+    + [Task 1: Data Extraction and Storage](#task-1-data-extraction-and-storage)
+    + [Task 2: Creating BigLake Table](#task-2-creating-biglake-table)
+    + [Task 3: Airflow DAG for Automation](#task-3-airflow-dag-for-automation)
+    + [Task 4: Containerization](#task-4-containerization)
+      - [1: Create a Dockerfile:](#1-create-a-dockerfile-)
+      - [2: Docker Compose:](#2-docker-compose-)
+    + [Task 5: Data Analysis](#task-5-data-analysis)
+    + [Task 6: Documentation](#task-6-documentation)
 
 ## How to Setup and Run the Project
 
@@ -47,9 +47,10 @@ For the first setup we need to enable the DAGS so it will run a backfill for sch
 ![alt text](docs/images/airflow-dags-enable-and-backfill.png "Title")
 
 #### Completed State
+![alt text](docs/images/airflow-final-state.png "Title")
 
-### Pre-requisites & Environment Information
-#### Pre-requisites
+### Prerequisites and Environment Information
+#### Prerequisites
 In order to run this project these conditions need to be met:
 - Docker/Docker Desktop Installed (Docker Compose Included)
 - WSL 2 Installed (For Windows User)
@@ -59,6 +60,13 @@ Don't worry about:
 - Google Cloud SDK (Will be installed in Docker)
 - Python (Will be installed in Docker)
 
+Version Used:
+> Docker version 27.1.1, build 6312585
+
+> Docker Compose version v2.28.1-desktop.1
+
+> WSL version: 2.2.4.0
+
 #### Environment Setup
 There are 3 environment variables need to be check in the *Dockerfile*:
 ```bash
@@ -67,7 +75,7 @@ ENV GCS_BUCKET_NAME=<gcs-bucket-name>
 ENV BQ_DATASET_NAME=<bigquery-dataset-name>
 ```
 
-Note:
+**Note**:
 - GOOGLE_CLOUD_PROJECT for Project ID Google Cloud SDK
 - GCS_BUCKET_NAME for Google Cloud Storage Bucket Destination
 - BQ_DATASET_NAME for Big Query Dataset Destination
