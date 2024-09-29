@@ -53,5 +53,5 @@ ORDER BY number_of_trips DESC;
 SELECT date, COUNT(trip_id) AS number_of_trips
 FROM `temporal-sweep-436906-n8.analytics.bikeshare_table`
 GROUP BY 1
-ORDER BY number_of_trips
+ORDER BY number_of_trips DESC
 LIMIT 1;
