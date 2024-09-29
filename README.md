@@ -1,6 +1,7 @@
 # Zeals ETL Project
 [![GitHub Repo](https://img.shields.io/github/stars/ebbrylhub/zeals-hw-etl?style=social)](https://github.com/ebbrylhub/zeals-hw-etl)
 
+## Table of Content
 - [Zeals ETL Project](#zeals-etl-project)
   * [How to Setup and Run the Project](#how-to-setup-and-run-the-project)
     + [1. Setup the Project](#1-setup-the-project)
@@ -22,32 +23,48 @@
       - [1: Create a Dockerfile:](#1-create-a-dockerfile-)
       - [2: Docker Compose:](#2-docker-compose-)
     + [Task 5: Data Analysis](#task-5-data-analysis)
+      - [1. Find the total number of trips for each day.](#1-find-the-total-number-of-trips-for-each-day)
+      - [2. Calculate the average trip](#2-calculate-the-average-trip-duration-for-each-day)
+      - [3. Identify the top 5 stations with the highest number of trip starts.](#3-identify-the-top-5-stations-with-the-highest-number-of-trip-starts)
+      - [4. Find the average number of trips per hour of the day.](#4-find-the-average-number-of-trips-per-hour-of-the-day)
+      - [5. Determine the most common trip route (start station to end station).](#5-determine-the-most-common-trip-route-start-station-to-end-station)
+      - [6. Calculate the number of trips each month.](#6-calculate-the-number-of-trips-each-month)
+      - [7. Find the station with the longest average trip duration.](#7-find-the-station-with-the-longest-average-trip-duration)
+      - [8. Find the busiest hour of the day (most trips started).](#8-find-the-busiest-hour-of-the-day--most-trips-started-)
+      - [9. Identify the day with the highest number of trips.](#9-identify-the-day-with-the-highest-number-of-trips)
+      - [Data Completeness](#data-completeness)
     + [Task 6: Documentation](#task-6-documentation)
 
 ## How to Setup and Run the Project
 
-### 1: Setup the Project 
+### 1. Setup the Project 
+**[:arrow_up: back to top](#table-of-content)**
 #### Build the image and container using docker-compose
 ```bash
 docker-compose up -d --build
 ```
 This will run docker-compose with build parameter in the background. Once completed you will see this:
-![alt text](docs/images/docker-compose-build.png "Title")
+![alt text](docs/images/docker-compose-build.png "docker-compose up -d --build")
+
+**[:arrow_up: back to top](#table-of-content)**
 
 ### 2. Run the Project
+**[:arrow_up: back to top](#table-of-content)**
 #### Open Airflow in Browser
 http://localhost:8080/home
 
 #### Login into Airflow
 Use admin credentials for the first login
-![alt text](docs/images/airflow-login.png "Title")
+![alt text](docs/images/airflow-login.png "Airflow Login Page")
 
 #### Enable the DAGS
 For the first setup we need to enable the DAGS so it will run a backfill for scheduled DAGS from its start_date
-![alt text](docs/images/airflow-dags-enable-and-backfill.png "Title")
+![alt text](docs/images/airflow-dags-enable-and-backfill.png "Enable DAGS")
 
 #### Completed State
-![alt text](docs/images/airflow-final-state.png "Title")
+![alt text](docs/images/airflow-final-state.png "Airflow Final State")
+
+**[:arrow_up: back to top](#table-of-content)**
 
 ### Prerequisites and Environment Information
 #### Prerequisites
@@ -80,6 +97,8 @@ ENV BQ_DATASET_NAME=<bigquery-dataset-name>
 - GCS_BUCKET_NAME for Google Cloud Storage Bucket Destination
 - BQ_DATASET_NAME for Big Query Dataset Destination
 
+**[:arrow_up: back to top](#table-of-content)**
+
 ### Project Structure
 Following the Assignment standard, these are the project structure used
 
@@ -98,8 +117,10 @@ Following the Assignment standard, these are the project structure used
     |-- requirements.txt (Requirements for Airflow Environment)
     |-- README.md (Documentation & Instructions)
 
-## Feature Checklist
+**[:arrow_up: back to top](#table-of-content)**
 
+## Feature Checklist
+**[:arrow_up: back to top](#table-of-content)**
 ### Task 1: Data Extraction and Storage
 - Write a Python or Spark script to extract data from the
 `bigquery-public-data.austin_bikeshare.bikeshare_trips` table in BigQuery 
@@ -117,6 +138,8 @@ partitioning (e.g.,
 `gs://your-bucket-name/bikeshare/YYYY-MM-DD/HH/data.parquet`)
 > Implemented with `gs://bigquery-analytics-bucket/bikeshare/date=YYYY-MM-DD/hour=HH/data.parquet`
 
+**[:arrow_up: back to top](#table-of-content)**
+
 ### Task 2: Creating BigLake Table
 - Write a script or use Airflow operators to create an external table in
 BigQuery
@@ -127,12 +150,16 @@ BigQuery
 partitions of data
 > The table will be created in the first job run, and then it will be updated daily
 
+**[:arrow_up: back to top](#table-of-content)**
+
 ### Task 3: Airflow DAG for Automation
 - Develop an Airflow DAG to automate the ETL pipeline, ensuring it runs
 daily
 > The Airflow DAG is developed to automate the ETL pipeline scripts (`bikeshare_etl.py`)
 - Schedule the DAG to run once every day
 > The Airflow DAG is automated to run `@daily` by using schedule_interval
+
+**[:arrow_up: back to top](#table-of-content)**
 
 ### Task 4: Containerization
 
@@ -153,17 +180,89 @@ scheduler and web server
 - Ensure the services can be easily started, stopped, and managed using Docker Compose
 > We can easily start & managed using `docker-compose up -d`, and stopped using `docker-compose down`
 
+**[:arrow_up: back to top](#table-of-content)**
+
 ### Task 5: Data Analysis
 
-1. **Find the total number of trips for each day.**
-2. **Calculate the average trip duration for each day.**
-3. **Identify the top 5 stations with the highest number of trip starts.**
-4. **Find the average number of trips per hour of the day.**
-5. **Determine the most common trip route (start station to end station).**
-6. **Calculate the number of trips each month.**
-7. **Find the station with the longest average trip duration.**
-8. **Find the busiest hour of the day (most trips started).**
-9. **Identify the day with the highest number of trips.**
+#### 1. Find the total number of trips for each day.
+The total number of trips of each day ordered from the oldest date.
+![alt text](docs/images/data-analysis-1.png "Data Analysis 1")
+
+Date 2013-12-12 only have 1 daily trip.
+
+**[:arrow_up: back to top](#table-of-content)**
+
+#### 2. Calculate the average trip duration for each day.
+The average trip duration in minutes for each day calculated and rounded to 3 decimals.
+![alt text](docs/images/data-analysis-2.png "Data Analysis 2")
+
+With date 2013-12-12 averaging 29 minutes of trip duration
+
+**[:arrow_up: back to top](#table-of-content)**
+
+#### 3. Identify the top 5 stations with the highest number of trip starts.
+Top 5 stations with the highest number based on trip start:
+![alt text](docs/images/data-analysis-3.png "Data Analysis 3")
+ranging from 44k-108k number of trips.
+
+**[:arrow_up: back to top](#table-of-content)**
+
+#### 4. Find the average number of trips per hour of the day.
+The average number of trips per hour of the day: 
+![alt text](docs/images/data-analysis-4.png "Data Analysis 4")
+
+on June 30th, 2024 the number of trips averaging 13.79 per hour.
+
+**[:arrow_up: back to top](#table-of-content)**
+
+#### 5. Determine the most common trip route (start station to end station).
+The most common trip route based on start and end station:
+![alt text](docs/images/data-analysis-5.png "Data Analysis 5")
+
+*Dean Keeton/Whitis* to *21st/Speedway @ PCL* with 17k total trips.
+
+**[:arrow_up: back to top](#table-of-content)**
+
+#### 6. Calculate the number of trips each month.
+The total number of trips each month:
+![alt text](docs/images/data-analysis-6.png "Data Analysis 6")
+
+Starting from December 2013 with 1418 number of trips.
+
+**[:arrow_up: back to top](#table-of-content)**
+
+#### 7. Find the station with the longest average trip duration.
+The longest average trip duration:
+![alt text](docs/images/data-analysis-7.png "Data Analysis 7")
+
+With 9118 minutes being the longest average trip duration.
+
+**[:arrow_up: back to top](#table-of-content)**
+
+#### 8. Find the busiest hour of the day (most trips started).
+The most trip based on the start hour:
+
+![alt text](docs/images/data-analysis-8.png "Data Analysis 8")
+
+With 5 PM being the busiest hour of trip start.
+
+**[:arrow_up: back to top](#table-of-content)**
+
+#### 9. Identify the day with the highest number of trips.
+The day with most trip:
+
+![alt text](docs/images/data-analysis-9.png "Data Analysis 9")
+
+With March 19th, 2015 totaling 2928 number of trips in a single day.
+
+**[:arrow_up: back to top](#table-of-content)**
+
+#### Data Completeness
+Data Comparison between Public Data and The Projects.
+
+![alt text](docs/images/data-completeness.png "Title")
+
+**[:arrow_up: back to top](#table-of-content)**
 
 ### Task 6: Documentation
 - Provide a `README.md` file with detailed instructions on how to set up and run the project
@@ -174,3 +273,5 @@ environment setup, and how to trigger the Airflow DAG
 - Explain the project structure, including where to place configuration files
 and scripts
 > The project structure are explain in the documentation
+
+**[:arrow_up: back to top](#table-of-content)**
